@@ -1,0 +1,19 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:tb="clr-namespace:Hardcodet.Wpf.TaskbarNotification;assembly=Hardcodet.Wpf.TaskbarNotification"
+                    xmlns:vm="clr-namespace:CleanFolder.ViewModel">
+
+
+    <tb:TaskbarIcon x:Key="NotifyIcon"
+                    IconSource="Computers.ico"
+                    ToolTipText="Double-click for window, right-click for menu"
+                    MenuActivation="LeftOrRightClick">
+
+        <tb:TaskbarIcon.ContextMenu>
+            <ContextMenu>
+                <MenuItem Command="{Binding OpenWindowCommand}" Header="Open" />
+                <MenuItem Command="{Binding CloseApplicationCommand}" Header="Close" />
+            </ContextMenu>
+        </tb:TaskbarIcon.ContextMenu>
+    </tb:TaskbarIcon>
+</ResourceDictionary>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<XmlItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <KilometerUpload />
+  <KilometerRegistration>
+    <ChassisNumber>WVWZZZ3CZ7E201402</ChassisNumber>
+    <KilometerStatus>78000</KilometerStatus>
+    <TypeOfData>120</TypeOfData>
+  </KilometerRegistration>
+</XmlItem>

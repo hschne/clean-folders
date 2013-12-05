@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Log xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Entries>
+    <LogEntry>
+      <TimeOfCleaning>2013-11-30T17:46:59.2436426+01:00</TimeOfCleaning>
+      <TimeTaken />
+      <DeletedItemsCount>0</DeletedItemsCount>
+      <FolderResults>
+        <CleanFolderResult>
+          <FolderName>Pictures</FolderName>
+          <FolderPath>C:\Users\hasch\Pictures</FolderPath>
+          <DeletedItems />
+          <CleanDuration />
+        </CleanFolderResult>
+        <CleanFolderResult>
+          <FolderName>dummyFolder</FolderName>
+          <FolderPath>D:\Documents\My SourceCode\Projects\CleanFolder\CleanFolderTest\dummyFolder</FolderPath>
+          <DeletedItems />
+          <CleanDuration />
+        </CleanFolderResult>
+      </FolderResults>
+    </LogEntry>
+    <LogEntry>
+      <TimeOfCleaning>2013-11-30T17:47:38.1088655+01:00</TimeOfCleaning>
+      <TimeTaken />
+      <DeletedItemsCount>0</DeletedItemsCount>
+      <FolderResults>
+        <CleanFolderResult>
+          <FolderName>Pictures</FolderName>
+          <FolderPath>C:\Users\hasch\Pictures</FolderPath>
+          <DeletedItems />
+          <CleanDuration />
+        </CleanFolderResult>
+        <CleanFolderResult>
+          <FolderName>dummyFolder</FolderName>
+          <FolderPath>D:\Documents\My SourceCode\Projects\CleanFolder\CleanFolderTest\dummyFolder</FolderPath>
+          <DeletedItems />
+          <CleanDuration />
+        </CleanFolderResult>
+      </FolderResults>
+    </LogEntry>
+    <LogEntry>
+      <TimeOfCleaning>2013-11-30T17:48:34.8961136+01:00</TimeOfCleaning>
+      <TimeTaken />
+      <DeletedItemsCount>0</DeletedItemsCount>
+      <FolderResults>
+        <CleanFolderResult>
+          <FolderName>Pictures</FolderName>
+          <FolderPath>C:\Users\hasch\Pictures</FolderPath>
+          <DeletedItems />
+          <CleanDuration />
+        </CleanFolderResult>
+        <CleanFolderResult>
+          <FolderName>dummyFolder</FolderName>
+          <FolderPath>D:\Documents\My SourceCode\Projects\CleanFolder\CleanFolderTest\dummyFolder</FolderPath>
+          <DeletedItems />
+          <CleanDuration />
+        </CleanFolderResult>
+      </FolderResults>
+    </LogEntry>
+    <LogEntry>
+      <TimeOfCleaning>2013-11-30T18:00:34.123251+01:00</TimeOfCleaning>
+      <TimeTaken />
+      <DeletedItemsCount>0</DeletedItemsCount>
+      <FolderResults>
+        <CleanFolderResult>
+          <FolderName>Pictures</FolderName>
+          <FolderPath>C:\Users\hasch\Pictures</FolderPath>
+          <DeletedItems />
+          <CleanDuration />
+        </CleanFolderResult>
+        <CleanFolderResult>
+          <FolderName>dummyFolder</FolderName>
+          <FolderPath>D:\Documents\My SourceCode\Projects\CleanFolder\CleanFolderTest\dummyFolder</FolderPath>
+          <DeletedItems />
+          <CleanDuration />
+        </CleanFolderResult>
+      </FolderResults>
+    </LogEntry>
+  </Entries>
+</Log>
