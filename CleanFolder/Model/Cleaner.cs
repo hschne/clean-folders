@@ -15,6 +15,11 @@ namespace CleanFolder.Model
 
         private static Log log;
 
+        public delegate void CleaningFoldersFinishedHandler();
+
+        public static event CleaningFoldersFinishedHandler CleaningFoldersFinished;
+
+
         static Cleaner() {
             cleanFolderSettings = CleanFolderSettings.GetInstance;
             folders = Folders.GetInstance;
@@ -28,6 +33,14 @@ namespace CleanFolder.Model
                 results.Add(Clean(folder));
             }
             log.Add(new LogEntry(results));
+            FireCleaningFolderFinished();
+        }
+
+        public static void CleanSingleFolder(Folder folder) {
+            List<CleanFolderResult> results = new List<CleanFolderResult>();
+            results.Add(Clean(folder));
+            log.Add(new LogEntry(results));
+            FireCleaningFolderFinished();
         }
 
         public static CleanFolderResult Clean(Folder folder)
@@ -113,6 +126,13 @@ namespace CleanFolder.Model
                 {
                     File.Delete(file);
                 }
+            }
+        }
+
+        private static void FireCleaningFolderFinished() {
+            CleaningFoldersFinishedHandler handler = CleaningFoldersFinished;
+            if (handler != null) {
+                handler();
             }
         }
 

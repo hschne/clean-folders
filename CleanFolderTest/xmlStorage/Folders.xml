@@ -1,18 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Folders xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <XmlDirectory>D:\Documents\My SourceCode\Projects\CleanFolder\CleanFolderTest\xmlStorage</XmlDirectory>
+  <XmlDirectory>D:\Documents\SourceCode\Projects\CleanFolder\CleanFolderTest\xmlStorage</XmlDirectory>
   <FileName>Folders.xml</FileName>
   <FolderList>
     <Folder>
-      <Path>C:\Users\hasch\Pictures</Path>
-      <DaysToDeletion>5</DaysToDeletion>
-    </Folder>
-    <Folder>
-      <Path>C:\Users\hasch\Videos</Path>
-      <DaysToDeletion>5</DaysToDeletion>
-    </Folder>
-    <Folder>
-      <Path>C:\Program Files (x86)\Clean Folder\dummyFolder</Path>
+      <Path>C:\Users\hasch\Music</Path>
       <DaysToDeletion>5</DaysToDeletion>
     </Folder>
   </FolderList>

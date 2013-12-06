@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Windows;
 
 using CleanFolder.Model;
 
 namespace CleanFolder.ViewModel
 {
     public class CleanFolderResultViewModel : ViewModelBase {
-
 
         public String FolderName {
             get {
@@ -23,9 +23,9 @@ namespace CleanFolder.ViewModel
             }
         }
 
-        public int CleanDuration {
+        public String CleanDuration {
             get {
-                return cleanFolderResult.CleanDuration.Milliseconds;
+                return cleanFolderResult.CleanDuration.Milliseconds + " ms";
             }
         }
 
@@ -49,6 +49,10 @@ namespace CleanFolder.ViewModel
             foreach (string deletedItem in DeletedItems) {
                 String fileName = deletedItem.Split('\\').Last();
                 result += fileName + "; ";
+                if (result.Length >= 15) {
+                    result += "...";
+                    break;
+                }
             }
             result = result.TrimEnd(';');
             return result;

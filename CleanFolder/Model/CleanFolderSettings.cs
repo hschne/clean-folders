@@ -13,43 +13,58 @@ namespace CleanFolder.Model
 {
     public class CleanFolderSettings {
 
-        public String XmlDirectory { get; set; }
-
-        public String FileName { get; set; }
-
-        private readonly XmlSerializer serializer;
+        private static readonly XmlSerializer Serializer = new XmlSerializer(typeof(CleanFolderSettings));
+       
+        public bool ActivateAutoClean { get; set; }
 
         public int CleaningInterval { get; set; }
+
+        public bool CleanOnStart { get; set; }
+
+        public bool NeedsConfirmation { get; set; }
+
+        public bool MoveInsteadOfClean { get; set; }
+
+        public bool ActivateExtensionIgnore { get; set; }
 
         private static CleanFolderSettings instance;
 
         public static CleanFolderSettings GetInstance {
             get {
                 if (instance == null) {
-                    instance = new CleanFolderSettings();
+                    instance = Load();
                 }
                 return instance;
             }
         }
 
         private CleanFolderSettings() {
-            serializer = new XmlSerializer(typeof(CleanFolderSettings));
-            XmlDirectory = Settings.Default.XmlDirectory;
-            CleaningInterval = Settings.Default.CleaningInterval;
-            FileName = "CleanFolderSettings.xml";
         }
 
         public void Save() {
-            TextWriter textWriter = new StreamWriter(XmlDirectory + "\\" + FileName);
-            serializer.Serialize(textWriter, this);
-            textWriter.Close();
-            textWriter.Dispose(); 
+            try {
+                TextWriter textWriter = new StreamWriter(Constants.XMLLOCATION + "\\" + Constants.SETTINGSFILE);
+                Serializer.Serialize(textWriter, this);
+                textWriter.Close();
+                textWriter.Dispose();
+            }
+            catch (FileNotFoundException) {
+                
+            }
+            
         }
 
-        public void Load() {
-            TextReader textReader = new StreamReader(XmlDirectory + "\\" + FileName);
-            instance = (CleanFolderSettings)serializer.Deserialize(textReader);
-            textReader.Dispose();
+        public static CleanFolderSettings Load() {
+            try {
+                TextReader textReader = new StreamReader(Constants.XMLLOCATION + "\\" + Constants.SETTINGSFILE);
+                instance = (CleanFolderSettings)Serializer.Deserialize(textReader);
+                textReader.Dispose();
+                return instance;
+            }
+            catch (FileNotFoundException) {
+                return new CleanFolderSettings();
+            }
+            
         }
     }
 }

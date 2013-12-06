@@ -66,15 +66,16 @@ namespace CleanFolder.Model
         }
 
         private void RunThread() {
-            while(true) {
+            if(settings.CleanOnStart) CleanAndSetResult();
+            while(settings.ActivateAutoClean) {
                 suspendEvent.WaitOne();
                 if(pauseEvent.WaitOne(0))
                 {
                     pauseEvent.Reset();
                 }
+                pauseEvent.WaitOne(TimeSpan.FromHours(Interval));
                 CleanAndSetResult();
                 NotifyCleaningFinished();
-                pauseEvent.WaitOne(TimeSpan.FromHours(Interval));
                 if(shutDownEvent.WaitOne(0))
                 {
                     break;

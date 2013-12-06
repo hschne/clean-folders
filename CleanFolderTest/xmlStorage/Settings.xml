@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CleanFolderSettings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ActivateAutoClean>false</ActivateAutoClean>
+  <CleaningInterval>0</CleaningInterval>
+  <CleanOnStart>false</CleanOnStart>
+  <NeedsConfirmation>false</NeedsConfirmation>
+  <MoveInsteadOfClean>false</MoveInsteadOfClean>
+  <ActivateExtensionIgnore>false</ActivateExtensionIgnore>
+</CleanFolderSettings>

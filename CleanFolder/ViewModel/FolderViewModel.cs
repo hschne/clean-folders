@@ -48,14 +48,21 @@ namespace CleanFolder.ViewModel
 
         public ICommand DeleteFolderCommand { get; set; }
 
+        public ICommand RequestCleaningCommand { get; set; }
+
         public delegate bool RequestDeletionHandler(FolderViewModel vm);
 
-        public event RequestDeletionHandler RequestDeletion; 
+        public event RequestDeletionHandler RequestDeletion;
+
+        public delegate void RequestCleaningHandler( Folder folder );
+
+        public event RequestCleaningHandler RequestCleaning;
 
         public FolderViewModel(Folder folder) {
             Folder = folder; 
             ChangePathCommand = new RelayCommand(param => ChangePath());
             DeleteFolderCommand = new RelayCommand(param => Delete(this));
+            RequestCleaningCommand =new RelayCommand(param => Cleaner.CleanSingleFolder(Folder));
         }
 
         private void ChangePath() {
@@ -83,6 +90,7 @@ namespace CleanFolder.ViewModel
             }
             return path;
         }
+
 
 
     }

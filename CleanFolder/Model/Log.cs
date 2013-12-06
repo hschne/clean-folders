@@ -20,9 +20,13 @@ namespace CleanFolder.Model
                 return Entries.Count;
             }
         }
+
+        private TimeSpan totalTimeTaken;
+
         public TimeSpan TotalTimeTaken {
             get {
-                return new TimeSpan(Entries.Sum(x => x.TimeTaken.Ticks));
+                totalTimeTaken = new TimeSpan(Entries.Sum(x => x.TimeTaken.Ticks));
+                return totalTimeTaken;
             }
         }
 
@@ -46,6 +50,10 @@ namespace CleanFolder.Model
 
         public void Add(LogEntry entry) {
             Entries.Add(entry);
+        }
+
+        public void Clear() {
+            Entries.Clear();
         }
 
         public void Save()

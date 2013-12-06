@@ -23,5 +23,6 @@ namespace CleanFolder.View
         {
             InitializeComponent();
         }
+
     }
 }

@@ -34,7 +34,7 @@ namespace CleanFolder.Model
         private Folders() {
             cleanFolderSettings = CleanFolderSettings.GetInstance;
             serializer = new XmlSerializer(typeof(Folders));
-            XmlDirectory = Properties.Settings.Default.XmlDirectory;
+            XmlDirectory = Constants.XMLLOCATION;
             FileName = "Folders.xml";
             FolderList = new ObservableCollection<Folder>();
         }

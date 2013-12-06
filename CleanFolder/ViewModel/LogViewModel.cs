@@ -21,6 +21,8 @@ namespace CleanFolder.ViewModel
 
         public ICommand RefreshCommand { get; set; }
 
+        public ICommand ClearCommand { get; set; }
+
         public ObservableCollection<LogEntryViewModel> LogEntries { get; set; }
 
         public LogViewModel() {
@@ -29,6 +31,10 @@ namespace CleanFolder.ViewModel
             RefreshCommand = new RelayCommand(param => {
                 LogEntries = new ObservableCollection<LogEntryViewModel>(log.Entries.Select(x => new LogEntryViewModel(x)));
                 OnPropertyChanged("LogEntries");
+            });
+            ClearCommand = new RelayCommand(param => {
+                log.Clear();
+                LogEntries.Clear();
             });
         }
         

@@ -31,7 +31,7 @@ namespace CleanFolder
 
         private CleanerTask cleanerTask = new CleanerTask();
 
-        private MainWindow mainWindowView = new MainWindow();
+        private MainWindow mainWindowView;
 
         private TaskbarIcon iconView;
 
@@ -52,7 +52,6 @@ namespace CleanFolder
 
         private void InitializeDataLayer() {
             cleanFolderSettings = CleanFolderSettings.GetInstance;
-            cleanFolderSettings.Load();
             folders = Folders.GetInstance;
             folders.Load();
             folders = Folders.GetInstance;
@@ -65,7 +64,6 @@ namespace CleanFolder
             trayIconViewModel.icon = iconView;
             iconView.DataContext = trayIconViewModel;
             mainWindowViewModel = new MainWindowViewModel();
-            mainWindowView.DataContext = mainWindowViewModel;
         }
 
         private void LinkMainToTrayIcon() {
@@ -74,7 +72,7 @@ namespace CleanFolder
 
         private void LinkTrayToCleanerTask() {
             trayIconViewModel.Clean += cleanerTask.ExecuteNow;
-            cleanerTask.CleaningFinished += trayIconViewModel.ShowCleaningFinishedStatus;
+            Cleaner.CleaningFoldersFinished += trayIconViewModel.ShowCleaningFinishedStatus;
         }
 
         private void LinkMainToCleanerTask() {
@@ -87,6 +85,8 @@ namespace CleanFolder
         }
 
         private void OpenMainWindow() {
+            mainWindowView = new MainWindow();
+            mainWindowView.DataContext = mainWindowViewModel;
             mainWindowView.Show();
         }
 
@@ -95,7 +95,7 @@ namespace CleanFolder
             cleanFolderSettings.Save();
             folders.Save();
             log.Save();
-            mainWindowView.Close();
+            if(mainWindowView != null) mainWindowView.Close();
             cleanerTask.Stop();
             Shutdown();
         }

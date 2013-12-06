@@ -13,6 +13,6 @@ namespace CleanFolder.Model
 
         public const string LOGFILE = "Log.xml";
 
-        public const string XMLLOCATION = @"D:\Documents\My SourceCode\Projects\CleanFolder\CleanFolderTest\xmlStorage";
+        public const string XMLLOCATION = @"D:\Documents\SourceCode\Projects\CleanFolder\CleanFolderTest\xmlStorage";
     }
 }

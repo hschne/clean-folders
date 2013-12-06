@@ -11,14 +11,14 @@
                     <DockPanel  >
                         <Label DockPanel.Dock="Left"  Content="{Binding Name}" />
                         <StackPanel HorizontalAlignment="Right" DockPanel.Dock="Right" Orientation="Horizontal">
-                            <Button Width="40" Height="40" Style="{DynamicResource MetroCircleButtonStyle}"  Grid.Column="2" >
+                            <Button Width="40" Height="40" Style="{DynamicResource MetroCircleButtonStyle}" Command="{Binding ChangePathCommand}" Grid.Column="2" >
                                 <Rectangle Width="15" Height="15">
                                     <Rectangle.Fill>
-                                        <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_folder_open}" />
+                                        <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_folder_open}"  />
                                     </Rectangle.Fill>
                                 </Rectangle>
                             </Button>
-                            <Button Width="40" Height="40" Style="{DynamicResource MetroCircleButtonStyle}"  Grid.Column="3" >
+                            <Button Width="40" Height="40" Style="{DynamicResource MetroCircleButtonStyle}"  Command="{Binding RequestCleaningCommand}" Grid.Column="3" >
                                 <Rectangle Width="15" Height="15">
                                     <Rectangle.Fill>
                                         <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_play}" />

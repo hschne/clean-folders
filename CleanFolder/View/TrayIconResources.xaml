@@ -5,14 +5,15 @@
 
 
     <tb:TaskbarIcon x:Key="NotifyIcon"
-                    IconSource="Computers.ico"
-                    ToolTipText="Double-click for window, right-click for menu"
-                    MenuActivation="LeftOrRightClick">
+                    IconSource="\Resources\Icons\Computers.ico"
+                    MenuActivation="LeftOrRightClick"
+                    DoubleClickCommand="{Binding OpenWindowCommand}">
 
         <tb:TaskbarIcon.ContextMenu>
             <ContextMenu>
-                <MenuItem Command="{Binding OpenWindowCommand}" Header="Open" />
-                <MenuItem Command="{Binding CloseApplicationCommand}" Header="Close" />
+                <MenuItem Command="{Binding OpenWindowCommand}" Header="Open Window" />
+                <MenuItem Command="{Binding StartCleanCommand}" Header="Clean now"></MenuItem>
+                <MenuItem Command="{Binding CloseApplicationCommand}" Header="Exit" />
             </ContextMenu>
         </tb:TaskbarIcon.ContextMenu>
     </tb:TaskbarIcon>

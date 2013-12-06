@@ -32,6 +32,7 @@ namespace CleanFolder.ViewModel
             foreach(FolderViewModel folder in FolderList)
             {
                 folder.RequestDeletion += FolderList.Remove;
+
             }
             AddFolderCommand = new RelayCommand(param => AddFolder());
             RemoveFolderCommand = new RelayCommand(param => RemoveFolder(SelectedFolder));
@@ -65,6 +66,7 @@ namespace CleanFolder.ViewModel
             }
             return path;
         }
+
 
         private void DelegateChanges( object sender, NotifyCollectionChangedEventArgs e ) {
             if(e.Action == NotifyCollectionChangedAction.Add)
