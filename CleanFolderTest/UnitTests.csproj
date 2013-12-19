@@ -55,6 +55,7 @@
     <Compile Include="FoldersTest.cs" />
     <Compile Include="CleanerTest.cs" />
     <Compile Include="LogTests.cs" />
+    <Compile Include="TestConstants.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CleanFolder\CleanFolder.csproj">

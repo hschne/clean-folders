@@ -7,5 +7,13 @@
       <Path>C:\Users\hasch\Music</Path>
       <DaysToDeletion>5</DaysToDeletion>
     </Folder>
+    <Folder>
+      <Path>C:\Users\hasch\Pictures</Path>
+      <DaysToDeletion>5</DaysToDeletion>
+    </Folder>
+    <Folder>
+      <Path>C:\Users\hasch\Videos</Path>
+      <DaysToDeletion>5</DaysToDeletion>
+    </Folder>
   </FolderList>
 </Folders>

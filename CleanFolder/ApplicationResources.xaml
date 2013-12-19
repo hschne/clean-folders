@@ -39,4 +39,28 @@
         <view:LogView />
     </DataTemplate>
 
+    <Style x:Key="H1" TargetType="Label">
+        <Setter Property="FontSize" Value="14" ></Setter>
+        <Setter Property="HorizontalAlignment" Value="Center" />
+    </Style>
+
+    <Style x:Key="H2" TargetType="Label">
+        <Setter Property="FontSize" Value="12" ></Setter>
+        <Setter Property="HorizontalAlignment" Value="Center" />
+    </Style>
+
+    <Style x:Key="H0" TargetType="Label">
+        <Setter Property="FontSize" Value="18" ></Setter>
+        <Setter Property="HorizontalAlignment" Value="Center" />
+    </Style>
+    
+    <Style x:Key="TransparentButton" TargetType="Button">
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="BorderBrush" Value="Transparent"></Setter>
+        <Style.Triggers>
+            
+        </Style.Triggers>
+
+    </Style>
+    
 </ResourceDictionary>

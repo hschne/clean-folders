@@ -10,9 +10,12 @@ using System.Windows.Input;
 
 using CleanFolder.Model;
 
+using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
+
 namespace CleanFolder.ViewModel
 {
-    public class FoldersViewModel : ViewModelBase {
+    public class FoldersViewModel : ViewModelBase  {
 
         private Folders folders;
 
@@ -24,6 +27,7 @@ namespace CleanFolder.ViewModel
 
         public ICommand RemoveFolderCommand { get; set; }
 
+
         public FoldersViewModel()
         {
             folders = Folders.GetInstance;
@@ -31,7 +35,7 @@ namespace CleanFolder.ViewModel
             FolderList.CollectionChanged += DelegateChanges;
             foreach(FolderViewModel folder in FolderList)
             {
-                folder.RequestDeletion += FolderList.Remove;
+                folder.RequestDeletion += RemoveFolder;
 
             }
             AddFolderCommand = new RelayCommand(param => AddFolder());
@@ -40,17 +44,32 @@ namespace CleanFolder.ViewModel
 
         private void RemoveFolder(FolderViewModel folder) {
             if (SelectedFolder != null) {
-                FolderList.Remove(folder);
+                await FireShowMessage(Constants.YESNODIALOG, "Are you sure you want to stop watching the folder " + folder.Name + "?"+ Environment.NewLine +"All settings will be lost.");
             }
         }
+
 
         private void AddFolder()
         {
             String path = OpenFolderBrowser();
+
             if(!String.IsNullOrEmpty(path))
             {
-                FolderList.Add(new FolderViewModel(new Folder(path, 5)));
+                if (FolderAlreadyWatched(path)) {
+                    FireShowMessage(Constants.ERRORMESSAGE, "Whoops! You can't add the same folder twice!");
+                }
+                else {
+                    FolderList.Add(new FolderViewModel(new Folder(path, 5)));
+                }
             }
+        }
+
+
+        private bool FolderAlreadyWatched(String path) {
+            if (FolderList.Any(x => x.Path == path)) {
+                return true;
+            }
+            return false;
         }
 
         private String OpenFolderBrowser()
@@ -74,7 +93,7 @@ namespace CleanFolder.ViewModel
                 foreach(FolderViewModel vm in e.NewItems)
                 {
                     folders.FolderList.Add(vm.Folder);
-                    vm.RequestDeletion += FolderList.Remove;
+                    vm.RequestDeletion += RemoveFolder;
                 }
             }
             else if(e.Action == NotifyCollectionChangedAction.Remove)
@@ -82,7 +101,7 @@ namespace CleanFolder.ViewModel
                 foreach(FolderViewModel vm in e.OldItems)
                 {
                     folders.FolderList.Remove(vm.Folder);
-                    vm.RequestDeletion -= FolderList.Remove;
+                    vm.RequestDeletion -= RemoveFolder;
                 }
             }
             else if(e.Action == NotifyCollectionChangedAction.Reset)

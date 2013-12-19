@@ -14,5 +14,11 @@ namespace CleanFolder.Model
         public const string LOGFILE = "Log.xml";
 
         public const string XMLLOCATION = @"D:\Documents\SourceCode\Projects\CleanFolder\CleanFolderTest\xmlStorage";
+
+        public const string ERRORMESSAGE = "Error";
+
+        public const string NOTIFICATION = "Notification";
+
+        public const string YESNODIALOG = "YesNoDialog";
     }
 }

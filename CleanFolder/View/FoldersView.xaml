@@ -3,38 +3,75 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
              mc:Ignorable="d" Width="500" Height="250">
     <DockPanel  HorizontalAlignment="Center">
-        <ListView Width="500" ItemsSource="{Binding FolderList}" SelectedItem="{Binding SelectedFolder}"  BorderThickness="0" DockPanel.Dock="Top" Height="Auto" >
+        <ListView FocusVisualStyle="{x:Null}" Width="500" ItemsSource="{Binding FolderList}" SelectedItem="{Binding SelectedFolder}"  BorderThickness="0" DockPanel.Dock="Top" Height="Auto" MaxHeight="200" >
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <DockPanel  >
-                        <Label DockPanel.Dock="Left"  Content="{Binding Name}" />
-                        <StackPanel HorizontalAlignment="Right" DockPanel.Dock="Right" Orientation="Horizontal">
-                            <Button Width="40" Height="40" Style="{DynamicResource MetroCircleButtonStyle}" Command="{Binding ChangePathCommand}" Grid.Column="2" >
-                                <Rectangle Width="15" Height="15">
-                                    <Rectangle.Fill>
-                                        <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_folder_open}"  />
-                                    </Rectangle.Fill>
-                                </Rectangle>
-                            </Button>
-                            <Button Width="40" Height="40" Style="{DynamicResource MetroCircleButtonStyle}"  Command="{Binding RequestCleaningCommand}" Grid.Column="3" >
-                                <Rectangle Width="15" Height="15">
-                                    <Rectangle.Fill>
-                                        <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_play}" />
-                                    </Rectangle.Fill>
-                                </Rectangle>
-                            </Button>
-                            <Button Width="40" Height="40" Style="{DynamicResource MetroCircleButtonStyle}" Command="{Binding DeleteFolderCommand}"  Grid.Column="1" >
-                                <Rectangle Width="15" Height="15">
-                                    <Rectangle.Fill>
-                                        <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_delete}" />
-                                    </Rectangle.Fill>
-                                </Rectangle>
-                            </Button>
-                        </StackPanel>
-
-                    </DockPanel>
+                        <StackPanel>
+                         <Border BorderThickness="1 1 1 0" BorderBrush="LightSkyBlue">
+                        <DockPanel VerticalAlignment="Center" MaxHeight="33">
+                            <Label VerticalAlignment="Center" HorizontalAlignment="Left" Style="{StaticResource H0}" DockPanel.Dock="Left"  Content="{Binding Name}" />
+                            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Right" DockPanel.Dock="Right" Orientation="Horizontal">
+                                <Button Margin="5,5" Style="{DynamicResource ChromelessButtonStyle}" Command="{Binding RequestCleaningCommand}">
+                                    <Rectangle Width="15" Height="15">
+                                        <Rectangle.Fill>
+                                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_play}" />
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+                                </Button>
+                                <Button Margin="5,5"  Style="{DynamicResource ChromelessButtonStyle}" Command="{Binding DeleteFolderCommand}"  >
+                                    <Rectangle Width="15" Height="15">
+                                        <Rectangle.Fill>
+                                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_delete}" />
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+                                </Button>
+                            </StackPanel>
+                        </DockPanel >
+                        </Border>
+                        <Border Height="Auto" BorderBrush="LightBlue" BorderThickness="1 0 1 1">
+                            <DockPanel Background="White" Height="0" x:Name="DetailsGrid">
+                                <StackPanel Orientation="Vertical" DockPanel.Dock="Left">
+                                <Label 
+                                HorizontalAlignment="Left"
+                                Style="{StaticResource H1}"
+                                Grid.Row="0" Grid.Column="0" Content="Folder path"></Label>
+                                    <TextBox 
+                                Margin="10,5"
+                                HorizontalAlignment="Left"
+                                Style="{DynamicResource SearchMetroTextBox}"
+                                Controls:TextboxHelper.ButtonCommand="{Binding ChangePathCommand, Mode=OneWay}"
+                                Width="250" 
+                                Text="{Binding Path=Path}" ToolTip="The path to the folder"></TextBox>
+                                </StackPanel>
+                                <StackPanel Width="150" DockPanel.Dock="Right" Orientation="Vertical">
+                                    <Label HorizontalAlignment="Right" Style="{StaticResource H1}"  Content="Delete after Days:" ToolTip="The maximum duration in days that a file can persist in the folder without beeing accessed."></Label>
+                                    <Controls:NumericUpDown Margin="10,5" HorizontalAlignment="Right" TextAlignment="Center" Value="{Binding DaysToDeletion}" Width="70" ></Controls:NumericUpDown>
+                                </StackPanel>
+                            </DockPanel>
+                      
+                        </Border>
+                    </StackPanel>
+                    <DataTemplate.Triggers>
+                        <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}}}" Value="True">
+                            <DataTrigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="DetailsGrid" SpeedRatio="3" Storyboard.TargetProperty="Height" From="0" To="90" Duration="0:0:1"></DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </DataTrigger.EnterActions>
+                            <DataTrigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="DetailsGrid" SpeedRatio="3" Storyboard.TargetProperty="Height" To="0" Duration="0:0:1"></DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </DataTrigger.ExitActions>
+                        </DataTrigger>
+                    </DataTemplate.Triggers>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

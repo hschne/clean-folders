@@ -46,6 +46,9 @@ namespace CleanFolder.ViewModel
 
         private String ParseDeletedItems() {
             String result = String.Empty;
+            if (DeletedItems.Count == 0) {
+                return "No items deleted.";
+            }
             foreach (string deletedItem in DeletedItems) {
                 String fileName = deletedItem.Split('\\').Last();
                 result += fileName + "; ";

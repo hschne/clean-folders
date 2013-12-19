@@ -43,7 +43,6 @@ namespace CleanFolder.ViewModel
         public bool MoveInsteadOfClean {
             get {
                 return settings.MoveInsteadOfClean;
-                OnPropertyChanged("MoveInsteadOfClean");
             }
             set {
                 settings.MoveInsteadOfClean = value;

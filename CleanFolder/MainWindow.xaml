@@ -3,30 +3,34 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:metro="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         Title="Clean Folders" Height="350" Width="525"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        FocusVisualStyle="{x:Null}">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colors.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Green.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Blue.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.AnimatedSingleRowTabControl.xaml" />
-                <ResourceDictionary Source="MainWindowResources.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="ApplicationResources.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
 
-    <DockPanel Height="315" LastChildFill="False" VerticalAlignment="Top" Margin="0,0,2,0">
-        <ContentControl Content="{Binding CurrentViewModel}" Height="315" VerticalAlignment="Top"/>
-        <TabControl Height="315" VerticalAlignment="Top" Width="515">
-            <TabItem Header="Folders">
+    
+
+    <DockPanel  Height="315" LastChildFill="False" VerticalAlignment="Top" Margin="0,0,2,0">
+        <TabControl  FocusVisualStyle="{x:Null}"  Height="315" VerticalAlignment="Top" Width="515">
+            <TabItem  FocusVisualStyle="{x:Null}" Header="Folders">
                 <ContentControl Content="{Binding FoldersViewModel}"></ContentControl>
             </TabItem>
-            <TabItem Header="Log">
+            <TabItem  FocusVisualStyle="{x:Null}" Header="Log">
                 <ContentControl Content="{Binding LogViewModel}"></ContentControl>
             </TabItem>
-            <TabItem Header="Settings">
+            <TabItem  FocusVisualStyle="{x:Null}" Header="Settings">
                 <ContentControl Content="{Binding SettingsViewModel}"></ContentControl>
             </TabItem>
         </TabControl>

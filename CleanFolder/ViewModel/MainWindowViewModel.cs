@@ -26,13 +26,6 @@ namespace CleanFolder.ViewModel
 
         public SettingsViewModel SettingsViewModel { get; set; }
 
-        public FormWindowState state = FormWindowState.Minimized;
-
-        public ICommand ChangeViewToSettings { get; set; }
-
-        public ICommand ChangeViewToFolders { get; set; }
-
-        public ICommand ChangeViewToLog { get; set; }
 
         public MainWindowViewModel() {
             FoldersViewModel = new FoldersViewModel();
@@ -40,14 +33,5 @@ namespace CleanFolder.ViewModel
             SettingsViewModel = new SettingsViewModel();
         }
 
-        private void SetCommands() {
-
-        }
-
-
-        
-
-      
-        
     }
 }

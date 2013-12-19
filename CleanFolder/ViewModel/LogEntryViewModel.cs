@@ -14,8 +14,6 @@ namespace CleanFolder.ViewModel
 
         private LogEntry logEntry;
 
-        private bool isExpanded;
-
         public DateTime TimeOfCleaning {
             get {
                 return logEntry.TimeOfCleaning;
@@ -46,7 +44,6 @@ namespace CleanFolder.ViewModel
             
             logEntry = entry;
             FolderResults = new ObservableCollection<CleanFolderResultViewModel>(entry.FolderResults.Select(x => new CleanFolderResultViewModel(x)));
-            isExpanded = false;
         }
 
 

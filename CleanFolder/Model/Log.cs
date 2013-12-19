@@ -49,7 +49,7 @@ namespace CleanFolder.Model
         }
 
         public void Add(LogEntry entry) {
-            Entries.Add(entry);
+            Entries.Insert(0,entry);
         }
 
         public void Clear() {

@@ -13,10 +13,10 @@ namespace CleanFolderTest
 
         private void CreateDummyFolders() {
             folders = Folders.GetInstance;
-            folders.FolderList.Add(new Folder(@"D:\Documents\My SourceCode\Projects\CleanFolder\CleanFolderTest\dummyFolder", 5));
-            folders.FolderList.Add(new Folder(@"D:\Documents\My SourceCode\Projects\CleanFolder\CleanFolderTest\dummyFolder", 4));
-            folders.FolderList.Add(new Folder(@"D:\Documents\My SourceCode\Projects\CleanFolder\CleanFolderTest\dummyFolder", 3));
-            folders.FolderList.Add(new Folder(@"D:\Documents\My SourceCode\Projects\CleanFolder\CleanFolderTest\dummyFolder", 2));
+            folders.FolderList.Add(new Folder(TestConstants.DUMMYDIRECTORY, 5));
+            folders.FolderList.Add(new Folder(TestConstants.DUMMYDIRECTORY, 4));
+            folders.FolderList.Add(new Folder(TestConstants.DUMMYDIRECTORY, 3));
+            folders.FolderList.Add(new Folder(TestConstants.DUMMYDIRECTORY, 2));
         }
 
         [TestMethod]
@@ -31,7 +31,7 @@ namespace CleanFolderTest
         public void Load() {
             CreateDummyFolders();
             folders.Load();
-            Assert.IsTrue(folders.FileName == "Folders.xml");
+            Assert.IsTrue(folders.FileName == folders.FileName);
             Assert.IsTrue(folders.FolderList.Count == 4);
             Assert.IsTrue(folders.FolderList[0].DaysToDeletion == 5);
         }

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Input;
 
@@ -10,8 +12,22 @@ using CleanFolder.Model;
 
 namespace CleanFolder.ViewModel
 {
-    public class FolderViewModel : ViewModelBase
-    {
+    public class FolderViewModel : ViewModelBase {
+
+        private Visibility settingsVisibility;
+
+        public Visibility SettingsVisibility
+        {
+            get {
+                return settingsVisibility;
+            }
+            set {
+                settingsVisibility = value;
+                OnPropertyChanged("SettingsVisibility");
+            }
+        }
+
+        public Image FolderImage { get; set; }
 
         public String Name {
             get {
@@ -32,7 +48,8 @@ namespace CleanFolder.ViewModel
             }
         }
 
-        public int DaysToDeletion {
+        public int DaysToDeletion
+        {
             get {
                 return Folder.DaysToDeletion;
             }
@@ -50,19 +67,22 @@ namespace CleanFolder.ViewModel
 
         public ICommand RequestCleaningCommand { get; set; }
 
-        public delegate bool RequestDeletionHandler(FolderViewModel vm);
+        public ICommand ShowFolderSettingsCommand { get; set; }
+
+        public delegate void RequestDeletionHandler(FolderViewModel vm);
 
         public event RequestDeletionHandler RequestDeletion;
 
         public delegate void RequestCleaningHandler( Folder folder );
-
-        public event RequestCleaningHandler RequestCleaning;
 
         public FolderViewModel(Folder folder) {
             Folder = folder; 
             ChangePathCommand = new RelayCommand(param => ChangePath());
             DeleteFolderCommand = new RelayCommand(param => Delete(this));
             RequestCleaningCommand =new RelayCommand(param => Cleaner.CleanSingleFolder(Folder));
+            ShowFolderSettingsCommand = new RelayCommand(param => ShowFolderSettings());
+            SettingsVisibility = Visibility.Collapsed;
+           
         }
 
         private void ChangePath() {
@@ -89,6 +109,16 @@ namespace CleanFolder.ViewModel
                 path = objDialog.SelectedPath;
             }
             return path;
+        }
+
+        private void ShowFolderSettings() {
+            if (settingsVisibility == Visibility.Collapsed) {
+                SettingsVisibility = Visibility.Visible;
+            }
+            else {
+                SettingsVisibility = Visibility.Collapsed;
+            }
+            
         }
 
 
