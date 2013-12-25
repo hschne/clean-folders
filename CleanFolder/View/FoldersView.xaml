@@ -48,7 +48,7 @@
                                 </StackPanel>
                                 <StackPanel Width="150" DockPanel.Dock="Right" Orientation="Vertical">
                                     <Label HorizontalAlignment="Right" Style="{StaticResource H1}"  Content="Delete after Days:" ToolTip="The maximum duration in days that a file can persist in the folder without beeing accessed."></Label>
-                                    <Controls:NumericUpDown Margin="10,5" HorizontalAlignment="Right" TextAlignment="Center" Value="{Binding DaysToDeletion}" Width="70" ></Controls:NumericUpDown>
+                                    <!--<Controls:NumericUpDown Margin="10,5" HorizontalAlignment="Right" TextAlignment="Center" Value="{Binding DaysToDeletion}" Width="70" ></Controls:NumericUpDown>-->
                                 </StackPanel>
                             </DockPanel>
                       

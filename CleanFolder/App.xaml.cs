@@ -88,7 +88,6 @@ namespace CleanFolder
         private void OpenMainWindow() {
             mainWindowView = new MainWindow();
             mainWindowView.DataContext = mainWindowViewModel;
-            mainWindowViewModel.FoldersViewModel.ShowMessage += mainWindowView.ShowMessage;
             mainWindowView.Show();
         }
 

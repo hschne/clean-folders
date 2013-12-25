@@ -21,24 +21,6 @@ namespace CleanFolder
             InitializeComponent();
         }
 
-        private Task<MessageDialogResult> lastResult;
-
-        public Task<MessageDialogResult> ShowMessage(string type, string message)
-        {
-            switch (type) {
-                case(Constants.ERRORMESSAGE):
-                    ShowErrorDialog(message);
-                    return null;
-                case (Constants.NOTIFICATION):
-                    ShowNotification(message);
-                    return null;
-                case (Constants.YESNODIALOG):
-                    return ShowYesNoDialog(message);
-                default:
-                    return null;
-            }
-        }
-
         public async void ShowErrorDialog(String message)
         {
             MetroDialogOptions.ColorScheme = MetroDialogColorScheme.Theme;
@@ -53,7 +35,7 @@ namespace CleanFolder
 
         public async Task<MessageDialogResult> ShowYesNoDialog( String message ) {
             MetroDialogOptions.ColorScheme = MetroDialogColorScheme.Theme;
-            return await this.ShowMessageAsync("Confirm", message, MessageDialogStyle.AffirmativeAndNegative);
+            return this.ShowMessageAsync("Confirm", message, MessageDialogStyle.AffirmativeAndNegative);
 
         }
 

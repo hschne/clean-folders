@@ -10,7 +10,7 @@ using MahApps.Metro.Controls.Dialogs;
 namespace CleanFolder.ViewModel {
     public class ViewModelBase : INotifyPropertyChanged {
 
-        public delegate MessageDialogResult ShowMessageEventHandler(String messageType, String message);
+        public delegate Task<MessageDialogResult> ShowMessageEventHandler(String messageType, String message);
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -36,14 +36,5 @@ namespace CleanFolder.ViewModel {
             }
         }
 
-        protected async Task<MessageDialogResult> FireShowMessage(String type, String message)
-        {
-            ShowMessageEventHandler handler = ShowMessage;
-            if (handler != null) {
-                var result = han
-                return handler(type, message);
-            }
-            return MessageDialogResult.Negative;
-        }
     }
 }

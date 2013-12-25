@@ -42,9 +42,8 @@ namespace CleanFolder.ViewModel
             RemoveFolderCommand = new RelayCommand(param => RemoveFolder(SelectedFolder));
         }
 
-        private void RemoveFolder(FolderViewModel folder) {
+        private async void RemoveFolder(FolderViewModel folder) {
             if (SelectedFolder != null) {
-                await FireShowMessage(Constants.YESNODIALOG, "Are you sure you want to stop watching the folder " + folder.Name + "?"+ Environment.NewLine +"All settings will be lost.");
             }
         }
 
@@ -56,7 +55,7 @@ namespace CleanFolder.ViewModel
             if(!String.IsNullOrEmpty(path))
             {
                 if (FolderAlreadyWatched(path)) {
-                    FireShowMessage(Constants.ERRORMESSAGE, "Whoops! You can't add the same folder twice!");
+                    MessageDialogResult result = MainWindow.ShowErrorDialog;
                 }
                 else {
                     FolderList.Add(new FolderViewModel(new Folder(path, 5)));
