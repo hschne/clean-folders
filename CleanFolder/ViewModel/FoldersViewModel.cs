@@ -55,7 +55,8 @@ namespace CleanFolder.ViewModel
             if(!String.IsNullOrEmpty(path))
             {
                 if (FolderAlreadyWatched(path)) {
-                    MessageDialogResult result = MainWindow.ShowErrorDialog;
+                    var main = App.Current.MainWindow as MainWindow;
+                     main.ShowErrorDialog("Cant delete");
                 }
                 else {
                     FolderList.Add(new FolderViewModel(new Folder(path, 5)));

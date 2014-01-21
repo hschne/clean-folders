@@ -21,6 +21,7 @@ namespace CleanFolder
             InitializeComponent();
         }
 
+
         public async void ShowErrorDialog(String message)
         {
             MetroDialogOptions.ColorScheme = MetroDialogColorScheme.Theme;
@@ -33,7 +34,7 @@ namespace CleanFolder
             await this.ShowMessageAsync("Notification", message);
         }
 
-        public async Task<MessageDialogResult> ShowYesNoDialog( String message ) {
+        public Task<MessageDialogResult> ShowYesNoDialog( String message ) {
             MetroDialogOptions.ColorScheme = MetroDialogColorScheme.Theme;
             return this.ShowMessageAsync("Confirm", message, MessageDialogStyle.AffirmativeAndNegative);
 
