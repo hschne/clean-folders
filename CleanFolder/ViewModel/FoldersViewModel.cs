@@ -1,17 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Input;
 
 using CleanFolder.Model;
 
-using MahApps.Metro.Controls;
-using MahApps.Metro.Controls.Dialogs;
+using Application = System.Windows.Application;
 
 namespace CleanFolder.ViewModel
 {
@@ -42,8 +38,9 @@ namespace CleanFolder.ViewModel
             RemoveFolderCommand = new RelayCommand(param => RemoveFolder(SelectedFolder));
         }
 
-        private async void RemoveFolder(FolderViewModel folder) {
+        private void RemoveFolder(FolderViewModel folder) {
             if (SelectedFolder != null) {
+                FolderList.Remove(folder);
             }
         }
 
@@ -55,8 +52,8 @@ namespace CleanFolder.ViewModel
             if(!String.IsNullOrEmpty(path))
             {
                 if (FolderAlreadyWatched(path)) {
-                    var main = App.Current.MainWindow as MainWindow;
-                     main.ShowErrorDialog("Cant delete");
+                    var main = Application.Current.MainWindow as MainWindow;
+                     main.ShowNotification("Folder already watched.");
                 }
                 else {
                     FolderList.Add(new FolderViewModel(new Folder(path, 5)));

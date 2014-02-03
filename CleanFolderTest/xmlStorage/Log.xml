@@ -2,6 +2,32 @@
 <Log xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Entries>
     <LogEntry>
+      <TimeOfCleaning>2014-02-03T20:07:08.6472453+01:00</TimeOfCleaning>
+      <TimeTaken />
+      <DeletedItemsCount>0</DeletedItemsCount>
+      <FolderResults>
+        <CleanFolderResult>
+          <FolderName>Pictures</FolderName>
+          <FolderPath>C:\Users\hasch\Pictures</FolderPath>
+          <DeletedItems />
+          <CleanDuration />
+        </CleanFolderResult>
+      </FolderResults>
+    </LogEntry>
+    <LogEntry>
+      <TimeOfCleaning>2014-02-03T20:05:49.4987183+01:00</TimeOfCleaning>
+      <TimeTaken />
+      <DeletedItemsCount>0</DeletedItemsCount>
+      <FolderResults>
+        <CleanFolderResult>
+          <FolderName>Music</FolderName>
+          <FolderPath>C:\Users\hasch\Music</FolderPath>
+          <DeletedItems />
+          <CleanDuration />
+        </CleanFolderResult>
+      </FolderResults>
+    </LogEntry>
+    <LogEntry>
       <TimeOfCleaning>2013-12-16T15:22:15.6714816+01:00</TimeOfCleaning>
       <TimeTaken />
       <DeletedItemsCount>0</DeletedItemsCount>

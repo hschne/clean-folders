@@ -86,9 +86,13 @@ namespace CleanFolder
         }
 
         private void OpenMainWindow() {
-            mainWindowView = new MainWindow();
-            mainWindowView.DataContext = mainWindowViewModel;
+            if (mainWindowView == null) {
+                mainWindowView = new MainWindow();
+                mainWindowView.DataContext = mainWindowViewModel;
+            }
+            mainWindowView.Visibility = Visibility.Visible;
             mainWindowView.Show();
+
         }
 
 

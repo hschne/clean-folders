@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+             xmlns:b="clr-namespace:CleanFolder.View.AttachedBehaviours"
              mc:Ignorable="d" Width="500" Height="250">
     <DockPanel  HorizontalAlignment="Center">
         <ListView FocusVisualStyle="{x:Null}" Width="500" ItemsSource="{Binding FolderList}" SelectedItem="{Binding SelectedFolder}"  BorderThickness="0" DockPanel.Dock="Top" Height="Auto" MaxHeight="200" >
@@ -11,9 +12,9 @@
                 <DataTemplate>
                         <StackPanel>
                          <Border BorderThickness="1 1 1 0" BorderBrush="LightSkyBlue">
-                        <DockPanel VerticalAlignment="Center" MaxHeight="33">
+                            <DockPanel VerticalAlignment="Center" MaxHeight="33" b:MouseClick.MouseLeftClick="{Binding DoMouseClick}">
                             <Label VerticalAlignment="Center" HorizontalAlignment="Left" Style="{StaticResource H0}" DockPanel.Dock="Left"  Content="{Binding Name}" />
-                            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Right" DockPanel.Dock="Right" Orientation="Horizontal">
+                            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Right" DockPanel.Dock="Right" Orientation="Horizontal" >
                                 <Button Margin="5,5" Style="{DynamicResource ChromelessButtonStyle}" Command="{Binding RequestCleaningCommand}">
                                     <Rectangle Width="15" Height="15">
                                         <Rectangle.Fill>
@@ -21,7 +22,7 @@
                                         </Rectangle.Fill>
                                     </Rectangle>
                                 </Button>
-                                <Button Margin="5,5"  Style="{DynamicResource ChromelessButtonStyle}" Command="{Binding DeleteFolderCommand}"  >
+                                    <Button Margin="5,5"  Style="{DynamicResource ChromelessButtonStyle}" Command="{Binding DeleteFolderCommand}"  >
                                     <Rectangle Width="15" Height="15">
                                         <Rectangle.Fill>
                                             <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_delete}" />
@@ -47,8 +48,8 @@
                                 Text="{Binding Path=Path}" ToolTip="The path to the folder"></TextBox>
                                 </StackPanel>
                                 <StackPanel Width="150" DockPanel.Dock="Right" Orientation="Vertical">
-                                    <Label HorizontalAlignment="Right" Style="{StaticResource H1}"  Content="Delete after Days:" ToolTip="The maximum duration in days that a file can persist in the folder without beeing accessed."></Label>
-                                    <!--<Controls:NumericUpDown Margin="10,5" HorizontalAlignment="Right" TextAlignment="Center" Value="{Binding DaysToDeletion}" Width="70" ></Controls:NumericUpDown>-->
+                                    <Label HorizontalAlignment="Left" Style="{StaticResource H1}"  Content="Delete after Days:" ToolTip="The maximum duration in days that a file can persist in the folder without beeing accessed."></Label>
+                                    <Controls:NumericUpDown Margin="5,0,0,0"  TextAlignment="Left" Minimum="0" IsReadOnly="True" Value="{Binding DaysToDeletion}" Maximum="10" />
                                 </StackPanel>
                             </DockPanel>
                       

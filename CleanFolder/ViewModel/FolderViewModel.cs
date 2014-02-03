@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Input;
@@ -69,6 +65,8 @@ namespace CleanFolder.ViewModel
 
         public ICommand ShowFolderSettingsCommand { get; set; }
 
+        public ICommand HandleClickCommand { get; set; }
+
         public delegate void RequestDeletionHandler(FolderViewModel vm);
 
         public event RequestDeletionHandler RequestDeletion;
@@ -78,7 +76,7 @@ namespace CleanFolder.ViewModel
         public FolderViewModel(Folder folder) {
             Folder = folder; 
             ChangePathCommand = new RelayCommand(param => ChangePath());
-            DeleteFolderCommand = new RelayCommand(param => Delete(this));
+            DeleteFolderCommand = new RelayCommand(param => Delete());
             RequestCleaningCommand =new RelayCommand(param => Cleaner.CleanSingleFolder(Folder));
             ShowFolderSettingsCommand = new RelayCommand(param => ShowFolderSettings());
             SettingsVisibility = Visibility.Collapsed;
@@ -90,7 +88,7 @@ namespace CleanFolder.ViewModel
             Path = path; 
         }
 
-        private void Delete(FolderViewModel vm) {
+        private void Delete() {
             RequestDeletionHandler handler = RequestDeletion;
             if (handler != null) {
                 handler(this);
@@ -120,7 +118,6 @@ namespace CleanFolder.ViewModel
             }
             
         }
-
 
 
     }

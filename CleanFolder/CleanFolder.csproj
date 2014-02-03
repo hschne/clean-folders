@@ -139,6 +139,7 @@
     <Compile Include="ViewModel\SettingsViewModel.cs" />
     <Compile Include="ViewModel\TrayIconViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Compile Include="View\AttachedBehaviours\MouseClick.cs" />
     <Compile Include="View\CleanerView.xaml.cs">
       <DependentUpon>CleanerView.xaml</DependentUpon>
     </Compile>

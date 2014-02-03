@@ -1,15 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Windows.Threading;
 
-using CleanFolder.Properties;
-
-using Application = System.Windows.Application;
 
 namespace CleanFolder.Model
 {
@@ -39,8 +30,7 @@ namespace CleanFolder.Model
 
         public CleanerTask() {
             settings = CleanFolderSettings.GetInstance;
-            cleanerThread = new Thread((ThreadStart)RunThread);
-            cleanerThread.Name = "CleanerThread";
+            cleanerThread = new Thread(RunThread) { Name = "CleanerThread" };
         }
 
         public void Start() {
