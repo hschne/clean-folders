@@ -77,7 +77,6 @@ namespace CleanFolder.ViewModel
             Folder = folder; 
             ChangePathCommand = new RelayCommand(param => ChangePath());
             DeleteFolderCommand = new RelayCommand(param => Delete());
-            RequestCleaningCommand =new RelayCommand(param => Cleaner.CleanSingleFolder(Folder));
             ShowFolderSettingsCommand = new RelayCommand(param => ShowFolderSettings());
             SettingsVisibility = Visibility.Collapsed;
            

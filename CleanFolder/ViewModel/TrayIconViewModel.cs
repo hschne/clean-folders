@@ -48,11 +48,5 @@ namespace CleanFolder.ViewModel
             }
         }
 
-        public void ShowCleaningFinishedStatus() {
-            Log log = Log.GetInstance;
-            int itemsDeleted = log.Entries.Last().DeletedItemsCount;
-            icon.ShowBalloonTip("Cleaning finished!", "Total deleted Items: " +itemsDeleted, BalloonIcon.None);
-        }
-
     }
 }

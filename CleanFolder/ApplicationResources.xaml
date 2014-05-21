@@ -35,10 +35,6 @@
         <view:SettingsView />
     </DataTemplate>
 
-    <DataTemplate DataType="{x:Type vm:LogViewModel}">
-        <view:LogView />
-    </DataTemplate>
-
     <Style x:Key="H1" TargetType="Label">
         <Setter Property="FontSize" Value="14" ></Setter>
         <Setter Property="HorizontalAlignment" Value="Center" />

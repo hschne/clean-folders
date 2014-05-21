@@ -22,14 +22,11 @@ namespace CleanFolder.ViewModel
 
         public FoldersViewModel FoldersViewModel { get; set; }
 
-        public LogViewModel LogViewModel { get; set; }
-
         public SettingsViewModel SettingsViewModel { get; set; }
 
 
         public MainWindowViewModel() {
             FoldersViewModel = new FoldersViewModel();
-            LogViewModel = new LogViewModel();
             SettingsViewModel = new SettingsViewModel();
         }
 

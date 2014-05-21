@@ -23,8 +23,6 @@ namespace CleanFolder
 
         private Folders folders;
 
-        private Log log;
-
         private MainWindowViewModel mainWindowViewModel;
 
         private TrayIconViewModel trayIconViewModel;
@@ -45,8 +43,6 @@ namespace CleanFolder
             InitializeViewLayer();
 
             LinkTrayToApp();
-            LinkTrayToCleanerTask();
-
             cleanerTask.Start();
         }
 
@@ -55,7 +51,6 @@ namespace CleanFolder
             folders = Folders.GetInstance;
             folders.Load();
             folders = Folders.GetInstance;
-            log = Log.GetInstance;
         }
 
         private void InitializeViewLayer() {
@@ -69,11 +64,6 @@ namespace CleanFolder
 
         private void LinkMainToTrayIcon() {
             
-        }
-
-        private void LinkTrayToCleanerTask() {
-            trayIconViewModel.Clean += cleanerTask.ExecuteNow;
-            Cleaner.CleaningFoldersFinished += trayIconViewModel.ShowCleaningFinishedStatus;
         }
 
         private void LinkMainToCleanerTask() {
@@ -99,7 +89,6 @@ namespace CleanFolder
         private void CloseApplication() {
             cleanFolderSettings.Save();
             folders.Save();
-            log.Save();
             if(mainWindowView != null) mainWindowView.Close();
             cleanerTask.Stop();
             Shutdown();

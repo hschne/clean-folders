@@ -3,36 +3,27 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text;
 
 namespace CleanFolder.Model
 {
     public static class Cleaner {
 
-        private static CleanFolderSettings cleanFolderSettings;
-
-        private static Folders folders;
-
-        public delegate void CleaningFoldersFinishedHandler();
-
-        public static event CleaningFoldersFinishedHandler CleaningFoldersFinished;
-
+        private static readonly Folders Folders;
 
         static Cleaner() {
-            cleanFolderSettings = CleanFolderSettings.GetInstance;
-            folders = Folders.GetInstance;
+            Folders = Folders.GetInstance;
         }
 
         public static void Clean()
         {
-            foreach (Folder folder in folders.FolderList) {
+            foreach (Folder folder in Folders.FolderList) {
                Clean(folder);
             }
         }
         public static void Clean(Folder folder)
         {
             List<String> folderContents = GetFolderContents(folder.Path);
-            List<String> deletionList = GetDeletionList(folderContents, folder.DaysToDeletion);
+            IEnumerable<string> deletionList = GetDeletionList(folderContents, folder.DaysToDeletion);
             DeleteFiles(deletionList);
         }
 
@@ -50,15 +41,15 @@ namespace CleanFolder.Model
             return result;
         }
 
-        private static List<String> GetFolderPaths(String path)
+        private static IEnumerable<string> GetFolderPaths(String path)
         {
             List<String> result = Directory.GetDirectories(path, "*").ToList();
             return result;
         }
 
-        private static List<String> GetDeletionList(IEnumerable<string> folderContents, int daysToDeletion)
+        private static IEnumerable<string> GetDeletionList(IEnumerable<string> folderContents, int daysToDeletion)
         {
-            List<String> deletionList =new List<string>();
+            var deletionList =new List<string>();
             foreach(String item in folderContents)
             {
                 if(IsFreeToDelete(item, daysToDeletion))
@@ -91,7 +82,7 @@ namespace CleanFolder.Model
 
         private static FileInfo GetFileInfo(String filePath)
         {
-            FileInfo info = new FileInfo(filePath);
+            var info = new FileInfo(filePath);
             return info;
         }
 
@@ -99,7 +90,7 @@ namespace CleanFolder.Model
         {
             foreach(String file in deletionList)
             {
-                FileInfo info = new FileInfo(file);
+                var info = new FileInfo(file);
                 if(info.Attributes.Equals(FileAttributes.Directory))
                 {
                     Directory.Delete(file,true);
