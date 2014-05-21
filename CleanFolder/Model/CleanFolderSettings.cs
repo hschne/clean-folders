@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Xml.Serialization;
 
 namespace CleanFolder.Model
@@ -46,15 +47,23 @@ namespace CleanFolder.Model
             
         }
 
-        public static CleanFolderSettings Load() {
-            try {
-                TextReader textReader = new StreamReader(Constants.XMLLOCATION + "\\" + Constants.SETTINGSFILE);
-                instance = (CleanFolderSettings)Serializer.Deserialize(textReader);
-                textReader.Dispose();
+        public static CleanFolderSettings Load()
+        {
+            TextReader textReader = null;
+            try
+            {
+                string settingsPath = Constants.XMLLOCATION + "\\" + Constants.SETTINGSFILE;
+                textReader = new StreamReader(settingsPath);
+                instance = (CleanFolderSettings) Serializer.Deserialize(textReader);
                 return instance;
             }
-            catch (FileNotFoundException) {
+            catch (Exception)
+            {
                 return new CleanFolderSettings();
+            }
+            finally
+            {
+                textReader.Dispose();
             }
             
         }

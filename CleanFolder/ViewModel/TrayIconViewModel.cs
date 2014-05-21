@@ -21,10 +21,6 @@ namespace CleanFolder.ViewModel
 
         public ICommand CloseApplicationCommand { get; set; }
 
-        public delegate void CleanEventHandler();
-
-        public event CleanEventHandler Clean;
-
         public delegate void OpenWindowEventHandler();
 
         public event OpenWindowEventHandler OpenWindow;
@@ -47,13 +43,6 @@ namespace CleanFolder.ViewModel
 
         private void RequestCloseApplication() {
             CloseApplicationEventHandler handler = CloseApplication;
-            if (handler != null) {
-                handler();
-            }
-        }
-
-        private void RequestClean() {
-            CleanEventHandler handler = Clean;
             if (handler != null) {
                 handler();
             }

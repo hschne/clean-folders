@@ -9,6 +9,7 @@ namespace CleanFolderTest
 {
     [TestClass]
     public class SettingsTest {
+
         private CleanFolderSettings cleanFolderSettings;
 
         private void CreateDummySettings() {

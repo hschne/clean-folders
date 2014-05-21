@@ -13,8 +13,6 @@ namespace CleanFolder.Model
 
         private static Folders folders;
 
-        private static Log log;
-
         public delegate void CleaningFoldersFinishedHandler();
 
         public static event CleaningFoldersFinishedHandler CleaningFoldersFinished;
@@ -23,35 +21,19 @@ namespace CleanFolder.Model
         static Cleaner() {
             cleanFolderSettings = CleanFolderSettings.GetInstance;
             folders = Folders.GetInstance;
-            log = Log.GetInstance;
         }
 
         public static void Clean()
         {
-            List < CleanFolderResult > results = new List<CleanFolderResult>();
             foreach (Folder folder in folders.FolderList) {
-                results.Add(Clean(folder));
+               Clean(folder);
             }
-            log.Add(new LogEntry(results));
-            FireCleaningFolderFinished();
         }
-
-        public static void CleanSingleFolder(Folder folder) {
-            List<CleanFolderResult> results = new List<CleanFolderResult>();
-            results.Add(Clean(folder));
-            log.Add(new LogEntry(results));
-            FireCleaningFolderFinished();
-        }
-
-        public static CleanFolderResult Clean(Folder folder)
+        public static void Clean(Folder folder)
         {
-            Stopwatch sw = new Stopwatch();
-            sw.Start();
-            List<String> FolderContents = GetFolderContents(folder.Path);
-            List<String> DeletionList = GetDeletionList(FolderContents, folder.DaysToDeletion);
-            DeleteFiles(DeletionList);
-            sw.Stop();
-            return  new CleanFolderResult(folder.Name, folder.Path, DeletionList, sw.Elapsed);
+            List<String> folderContents = GetFolderContents(folder.Path);
+            List<String> deletionList = GetDeletionList(folderContents, folder.DaysToDeletion);
+            DeleteFiles(deletionList);
         }
 
 
@@ -126,13 +108,6 @@ namespace CleanFolder.Model
                 {
                     File.Delete(file);
                 }
-            }
-        }
-
-        private static void FireCleaningFolderFinished() {
-            CleaningFoldersFinishedHandler handler = CleaningFoldersFinished;
-            if (handler != null) {
-                handler();
             }
         }
 
