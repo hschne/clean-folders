@@ -27,7 +27,6 @@ namespace CleanFolder.Model
             DeleteFiles(deletionList);
         }
 
-
         private static List<String> GetFolderContents(String path)
         {
             List<String> contents = GetFilePaths(path);

@@ -77,6 +77,7 @@ namespace CleanFolder.ViewModel
             Folder = folder; 
             ChangePathCommand = new RelayCommand(param => ChangePath());
             DeleteFolderCommand = new RelayCommand(param => Delete());
+            RequestCleaningCommand = new RelayCommand(param => Cleaner.Clean(Folder));
             ShowFolderSettingsCommand = new RelayCommand(param => ShowFolderSettings());
             SettingsVisibility = Visibility.Collapsed;
            
@@ -96,7 +97,7 @@ namespace CleanFolder.ViewModel
 
         private String OpenFolderBrowser()
         {
-            FolderBrowserDialog objDialog = new FolderBrowserDialog();
+            var objDialog = new FolderBrowserDialog();
             String path = null;
             objDialog.Description = "Choose a folder";
             objDialog.SelectedPath = @"C:\";
@@ -115,9 +116,7 @@ namespace CleanFolder.ViewModel
             else {
                 SettingsVisibility = Visibility.Collapsed;
             }
-            
         }
-
 
     }
 }

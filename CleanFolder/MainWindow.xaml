@@ -27,9 +27,6 @@
             <TabItem  FocusVisualStyle="{x:Null}" Header="Folders">
                 <ContentControl Content="{Binding FoldersViewModel}"></ContentControl>
             </TabItem>
-            <TabItem  FocusVisualStyle="{x:Null}" Header="Log">
-                <ContentControl Content="{Binding LogViewModel}"></ContentControl>
-            </TabItem>
             <TabItem  FocusVisualStyle="{x:Null}" Header="Settings">
                 <ContentControl Content="{Binding SettingsViewModel}"></ContentControl>
             </TabItem>

@@ -77,7 +77,7 @@
             </ListView.ItemTemplate>
         </ListView>
         <DockPanel VerticalAlignment="Bottom" LastChildFill="False" DockPanel.Dock="Bottom" Height="50">
-            <Button Style="{DynamicResource MetroFlatButton}" Command="{Binding RemoveFolderCommand}" Content="Remove " HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" DockPanel.Dock="Right" Margin="10,10"/>
+            <Button Style="{DynamicResource MetroFlatButton}" Command="{Binding DeleteFolderCommand}" Content="Remove " HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" DockPanel.Dock="Right" Margin="10,10"/>
             <Button Style="{DynamicResource MetroFlatButton}" Command="{Binding AddFolderCommand}" Content="Add new" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" DockPanel.Dock="Right" Margin="10,10"/>
         </DockPanel>
 
