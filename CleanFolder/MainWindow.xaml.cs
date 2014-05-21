@@ -42,11 +42,7 @@ namespace CleanFolder
 
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e) {
             e.Cancel = true;
-            this.Hide();
+            Hide();
         }
-
-
-
-
     }
 }

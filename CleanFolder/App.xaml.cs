@@ -11,6 +11,7 @@ using CleanFolder.Model;
 using CleanFolder.ViewModel;
 
 using Hardcodet.Wpf.TaskbarNotification;
+using Microsoft.Win32;
 
 namespace CleanFolder
 {
@@ -37,11 +38,8 @@ namespace CleanFolder
         {
             base.OnStartup(e);
             ShutdownMode = ShutdownMode.OnExplicitShutdown;
-
             InitializeDataLayer();
-
             InitializeViewLayer();
-
             LinkTrayToApp();
             cleanerTask.Start();
         }
@@ -62,14 +60,6 @@ namespace CleanFolder
 
         }
 
-        private void LinkMainToTrayIcon() {
-            
-        }
-
-        private void LinkMainToCleanerTask() {
-            
-        }
-
         private void LinkTrayToApp() {
             trayIconViewModel.OpenWindow += OpenMainWindow;
             trayIconViewModel.CloseApplication += CloseApplication;
@@ -84,7 +74,6 @@ namespace CleanFolder
             mainWindowView.Show();
 
         }
-
 
         private void CloseApplication() {
             cleanFolderSettings.Save();
